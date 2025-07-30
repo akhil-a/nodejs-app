@@ -39,8 +39,8 @@ jobs:
 
       - name: "Terraform init"
         run: terraform init 
-        working-directory: ./infra/
+        working-directory: ./Terraform/
 
       - name: "Terraform Destroy"
         run: terraform destroy -auto-approve 
-        working-directory: ./infra/
+        working-directory: ./Terraform/
