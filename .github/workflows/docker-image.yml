@@ -7,13 +7,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-maven-build:
-    uses: ./.github/workflows/maven-build.yml
 
   docker-build-publish:
-    needs: call-maven-build
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
