@@ -37,5 +37,5 @@ jobs:
       - name: Push Node image
         run: |
           IMAGE_NAME=${{ vars.DOCKERHUB_USERNAME }}/node-app
-          docker tag db-image:latest $IMAGE_NAME:latest
+          docker tag node-app:latest $IMAGE_NAME:latest
           docker push $IMAGE_NAME:latest
