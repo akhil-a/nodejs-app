@@ -2,7 +2,7 @@ resource "aws_instance" "db_server" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
   vpc_security_group_ids = ["sg-07de75b80af3dc8fa"]
-  user_data              = file("dbsetup.sh")
+  user_data              = file("db_userdata.sh")
 
   tags = {
     "Name" = "${var.project_name}-${var.project_environment}-dbserver"
@@ -14,7 +14,7 @@ resource "aws_instance" "nodejsapp" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
   vpc_security_group_ids = ["sg-07de75b80af3dc8fa"]
-  user_data              = file("userdata.sh")
+  user_data              = file("node_app_userdata.sh")
 
   tags = {
     "Name" = "${var.project_name}-${var.project_environment}-webserver"
@@ -34,5 +34,5 @@ resource "aws_route53_record" "app-url" {
   name    = "${var.project_name}.${var.domain_name}"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.db_server.public_ip]
+  records = [aws_instance.nodejsapp.public_ip]
 }
