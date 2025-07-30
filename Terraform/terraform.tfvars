@@ -1,0 +1,6 @@
+project_name        = "nodejs-sample-app"
+project_environment = "production"
+instance_type       = "t2.micro"
+ami_id              = "ami-0a1235697f4afa8a4"
+domain_name         = "akhilsworld.shop"
+hostname            = "nodejs-app"
